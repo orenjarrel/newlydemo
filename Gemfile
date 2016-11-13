@@ -33,3 +33,4 @@ gem 'carrierwave'
 
 gem "fog-aws"
 gem 'figaro'
+gem 'devise'
