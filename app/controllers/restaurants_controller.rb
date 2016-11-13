@@ -10,6 +10,8 @@ class RestaurantsController < ApplicationController
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
+    # defines the '@reviews' variable to be ALL reviews, where the review belongs to the current restaurant
+    @reviews = Review.where(restaurant_id: @restaurant.id)
   end
 
   # GET /restaurants/new
