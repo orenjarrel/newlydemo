@@ -1,6 +1,9 @@
 class ReviewsController < ApplicationController
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
+  # Oren add - ensures that a user is actually signed in before using the "current_user" tag line 31
+  before_action :authenticate_user!
+
   # GET /reviews
   # GET /reviews.json
   def index
@@ -25,6 +28,9 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = Review.new(review_params)
+
+    # Oren add - define what happens when a review is created and attach the "user_id" to the review [[ THIS SETS THE USER_ID FIELD]]
+    @review.user_id = current_user.id
 
     respond_to do |format|
       if @review.save
